@@ -31,6 +31,7 @@ function cargarPlanes(array) {
 }
 cargarPlanes(arrayGym)
 
+
 //pido los datos con fetch y los cargo
 function obtenerPlanes () {
     fetch(URL)
