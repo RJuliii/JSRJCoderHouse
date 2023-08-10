@@ -1,7 +1,7 @@
 const container = document.querySelector('div#container.container')
 const inputSearch = document.querySelector('input#inputSearch')
 const cantidadCarrito = document.querySelector('span#productosEnCarrito')
-
+const URL = "js/planes.json"
 
 function retornarCardHTML(plan){
     return `<div class="div-card">
@@ -29,6 +29,24 @@ function cargarPlanes(array) {
     activarClickEnBotones()
 }
 cargarPlanes(arrayGym)
+
+//pido los datos con fetch y los cargo
+function obtenerPlanes () {
+    fetch(URL)
+    .then((response)=> response.json())
+    .then((data)=> arrayGym.push(...data))
+    .then(()=> cargarPlanes(arrayGym))
+    .catch((error)=> Swal.fire({
+        position: 'center',
+        title: 'Error al cargar los planes, vuelva a intentar',
+        icon: "error",
+        background: "grey",
+        color: "white",
+        showConfirmButton: false,
+        timer: 3500
+    }))
+}
+obtenerPlanes()
 
 //evento click para agregar clickeando en el boton
 function activarClickEnBotones() {
@@ -59,3 +77,5 @@ inputSearch.addEventListener('search', ()=>{
     const resultado = arrayGym.filter((abono)=> abono.nombre.toLocaleUpperCase().includes(inputSearch.value.toLocaleUpperCase()))
     cargarPlanes(resultado)
 })
+
+
