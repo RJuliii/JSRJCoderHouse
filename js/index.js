@@ -37,7 +37,16 @@ function activarClickEnBotones() {
         boton.addEventListener('click', ()=> {
             let plan = arrayGym.find((abono)=> abono.codigo === parseInt(boton.id))
             carritoPlanes.push(plan)
-            cantidadCarrito.textContent = "Se agrego " + plan.nombre + " al carrito"
+            cantidadCarrito.textContent = carritoPlanes.length;
+            Toastify({
+                text: "Se agrego " + plan.nombre + " al carrito",
+                className: "info",
+                style: {
+                background: "rgba(11, 153, 153, 0.671)",
+                border: "1px solid black",
+                color: "black",
+                }
+            }).showToast();
             localStorage.setItem("carritoPlanes", JSON.stringify(carritoPlanes))
             console.table(carritoPlanes)
         })
