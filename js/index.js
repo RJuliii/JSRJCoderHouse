@@ -1,7 +1,8 @@
 const container = document.querySelector('div#container.container')
 const inputSearch = document.querySelector('input#inputSearch')
 const cantidadCarrito = document.querySelector('span#productosEnCarrito')
-const URL = "js/planes.json"
+const URL = "https://64d54ad1b592423e4695517d.mockapi.io/Planes/planes"
+// const URL = "js/planes.json"   (ambos metodos - json y mockapi)
 
 function retornarCardHTML(plan){
     return `<div class="div-card">
